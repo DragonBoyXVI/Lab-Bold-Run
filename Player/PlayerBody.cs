@@ -1,38 +1,33 @@
+using DragonXVI;
 using Godot;
 
 namespace LabBoldRun.Player;
 
-[GlobalClass]
-public partial class PlayerBody : CharacterBody2D
+/// <summary>
+/// Main character body of the player.
+/// </summary>
+[GlobalClass, Tool]
+public partial class PlayerBody : StrippedCharacterBody2DCS
 {
-    private const float UppiesSpeed = 300f;
-    private const float Gravity = 600f;
-    private readonly StringName UpInput = "ui_up";
+    public const float JumpStrength = 300f;    
+
+    public override void _Ready()
+    {
+        CollisionLayer = Collision.PlayerBody;
+        CollisionMask = Collision.BodyWalls;
+
+        if (Engine.IsEditorHint())
+        {
+            XVIUtil.DisableNodeProcesses(this);
+            return;
+        }
+    }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        var dt = (float)delta;
+        //var dt = (float)delta;
 
-
-        var newVelocty = Velocity;
-        if (Input.IsActionPressed(UpInput))
-        {
-            newVelocty.Y -= UppiesSpeed * dt;
-            Velocity = newVelocty;
-        }
-        else
-        {
-            if (IsOnFloor())
-            {
-                Velocity = Vector2.Zero;
-            }
-            else
-            {
-                newVelocty.Y += Gravity * dt;
-                Velocity = newVelocty;
-            }
-        }
         MoveAndSlide();
     }
 }

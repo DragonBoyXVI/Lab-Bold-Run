@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://50ux2m44u77d"]
+
+[ext_resource type="Script" uid="uid://tq50qh3nvshg" path="res://Player/PlayerBody.cs" id="1_ado2q"]
+[ext_resource type="Texture2D" uid="uid://mqijf5b262ca" path="res://icon.svg" id="2_aij50"]
+[ext_resource type="Shape2D" uid="uid://oi48lpuxy2dx" path="res://Player/player_body_shape.tres" id="3_gtyst"]
+[ext_resource type="Script" uid="uid://dx34b6ug3nnoc" path="res://addons/xvi_utilities/Scripts/State Machines/Node State Machine/CSStateMachine.cs" id="4_l5n3g"]
+[ext_resource type="Script" uid="uid://cyw6v3cftg8ph" path="res://Player/States/PlayerGrounded.cs" id="5_m4ekj"]
+[ext_resource type="Script" uid="uid://b5glpwyrbl76g" path="res://Player/States/PlayerJump.cs" id="6_m4ekj"]
+
+[node name="PlayerBody" type="CharacterBody2D" unique_id=1281873101]
+script = ExtResource("1_ado2q")
+metadata/_custom_type_script = "uid://tq50qh3nvshg"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=562778491]
+texture = ExtResource("2_aij50")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503984513]
+shape = ExtResource("3_gtyst")
+
+[node name="CSStateMachine" type="Node" parent="." unique_id=316848617 node_paths=PackedStringArray("InitialState")]
+script = ExtResource("4_l5n3g")
+InitialState = NodePath("PlayerJump")
+metadata/_custom_type_script = "uid://dx34b6ug3nnoc"
+
+[node name="PlayerGrounded" type="Node" parent="CSStateMachine" unique_id=1368108372 node_paths=PackedStringArray("Player")]
+script = ExtResource("5_m4ekj")
+Player = NodePath("../..")
+metadata/_custom_type_script = "uid://cyw6v3cftg8ph"
+
+[node name="PlayerJump" type="Node" parent="CSStateMachine" unique_id=1593250953 node_paths=PackedStringArray("Player")]
+script = ExtResource("6_m4ekj")
+Player = NodePath("../..")
+metadata/_custom_type_script = "uid://b5glpwyrbl76g"
