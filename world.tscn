@@ -1,3 +1,27 @@
 [gd_scene format=3 uid="uid://cpkiyp2b2aaj8"]
 
+[ext_resource type="Shape2D" uid="uid://euwk4gvo6oqt" path="res://floor_shape.tres" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://tq50qh3nvshg" path="res://Player/PlayerBody.cs" id="2_tlwt5"]
+[ext_resource type="Texture2D" uid="uid://mqijf5b262ca" path="res://icon.svg" id="3_aqk2v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_036b0"]
+radius = 56.0
+
 [node name="World" type="Node2D" unique_id=399303491]
+
+[node name="FloorBody" type="StaticBody2D" parent="." unique_id=2133992709]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody" unique_id=440810375]
+position = Vector2(0, 720)
+shape = ExtResource("1_f3sb7")
+
+[node name="PlayerBody" type="CharacterBody2D" parent="." unique_id=2073894474]
+position = Vector2(316, 135)
+script = ExtResource("2_tlwt5")
+metadata/_custom_type_script = "uid://tq50qh3nvshg"
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerBody" unique_id=594029890]
+texture = ExtResource("3_aqk2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody" unique_id=341189937]
+shape = SubResource("CircleShape2D_036b0")
