@@ -9,7 +9,8 @@ namespace LabBoldRun.Player;
 [GlobalClass, Tool]
 public partial class PlayerBody : StrippedCharacterBody2DCS
 {
-    public const float JumpStrength = 300f;    
+    public const float JumpStrength = 600f;
+    public const float BoostStrength = 800f;
 
     public override void _Ready()
     {

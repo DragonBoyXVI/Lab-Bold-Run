@@ -1,6 +1,6 @@
 using Godot;
 
-namespace LabBoldRun.Player;
+namespace LabBoldRun.Player.States;
 
 [GlobalClass, Tool]
 public partial class PlayerGrounded : PlayerState

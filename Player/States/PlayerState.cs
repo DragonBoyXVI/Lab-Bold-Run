@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using DragonXVI;
 using Godot;
 
-namespace LabBoldRun.Player;
+namespace LabBoldRun.Player.States;
 
 [GlobalClass, Tool]
 public abstract partial class PlayerState : CSState

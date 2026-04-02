@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dx34b6ug3nnoc" path="res://addons/xvi_utilities/Scripts/State Machines/Node State Machine/CSStateMachine.cs" id="4_l5n3g"]
 [ext_resource type="Script" uid="uid://cyw6v3cftg8ph" path="res://Player/States/PlayerGrounded.cs" id="5_m4ekj"]
 [ext_resource type="Script" uid="uid://b5glpwyrbl76g" path="res://Player/States/PlayerJump.cs" id="6_m4ekj"]
+[ext_resource type="Script" uid="uid://cfvfymm8kj7ng" path="res://Player/States/PlayerFlying.cs" id="7_0yn7a"]
 
 [node name="PlayerBody" type="CharacterBody2D" unique_id=1281873101]
 script = ExtResource("1_ado2q")
@@ -31,3 +32,8 @@ metadata/_custom_type_script = "uid://cyw6v3cftg8ph"
 script = ExtResource("6_m4ekj")
 Player = NodePath("../..")
 metadata/_custom_type_script = "uid://b5glpwyrbl76g"
+
+[node name="PlayerFlying" type="Node" parent="CSStateMachine" unique_id=1274024286 node_paths=PackedStringArray("Player")]
+script = ExtResource("7_0yn7a")
+Player = NodePath("../..")
+metadata/_custom_type_script = "uid://cfvfymm8kj7ng"
