@@ -1,0 +1,4 @@
+
+Player
+- Does the player feel good to control? Is it responsive?
+- Player should jump off the ground, then you hold the button to fly. (lore be damned)
