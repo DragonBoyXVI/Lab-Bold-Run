@@ -16,6 +16,7 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
     {
         CollisionLayer = Collision.PlayerBody;
         CollisionMask = Collision.BodyWalls;
+        AddToGroup( GroupNames.PlayerNode );
 
         if (Engine.IsEditorHint())
         {

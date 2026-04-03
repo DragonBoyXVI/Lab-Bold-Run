@@ -4,16 +4,24 @@
 [ext_resource type="Shape2D" uid="uid://bvumnncoiy1kl" path="res://ceiling_shape.tres" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://50ux2m44u77d" path="res://Player/player_body.tscn" id="2_fj7yv"]
 [ext_resource type="Script" uid="uid://dfnlk11mepdf3" path="res://ObstacleSystem/ObstacleSpawner.cs" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://dpvwy02ctnsmm" path="res://ObstacleSystem/TestBall/ObstacleBall.tscn" id="5_dwbse"]
+[ext_resource type="Script" uid="uid://cm575nnqgn4vg" path="res://ObstacleSystem/ObstacleDef.cs" id="6_pkg7o"]
+
+[sub_resource type="Resource" id="Resource_gbfbk"]
+script = ExtResource("6_pkg7o")
+Scene = ExtResource("5_dwbse")
+metadata/_custom_type_script = "uid://cm575nnqgn4vg"
 
 [node name="World" type="Node2D" unique_id=399303491]
 
 [node name="BoundryBody" type="StaticBody2D" parent="." unique_id=2133992709]
 
 [node name="CollisionFloor" type="CollisionShape2D" parent="BoundryBody" unique_id=440810375]
-position = Vector2(0, 720)
+position = Vector2(0, 688)
 shape = ExtResource("1_f3sb7")
 
 [node name="CollisionCeiling" type="CollisionShape2D" parent="BoundryBody" unique_id=1686234367]
+position = Vector2(0, 32)
 shape = ExtResource("2_aqk2v")
 
 [node name="PlayerBody" parent="." unique_id=1281873101 instance=ExtResource("2_fj7yv")]
@@ -21,4 +29,5 @@ position = Vector2(184, 581)
 
 [node name="ObstacleSpawner" type="Node2D" parent="." unique_id=1628070062]
 script = ExtResource("3_tlwt5")
+AvaliableDefs = [SubResource("Resource_gbfbk")]
 metadata/_custom_type_script = "uid://dfnlk11mepdf3"

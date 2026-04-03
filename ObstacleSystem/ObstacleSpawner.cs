@@ -1,5 +1,4 @@
-using System;
-using System.Linq;
+using System.Collections.Generic;
 using DragonXVI;
 using Godot;
 
@@ -36,7 +35,10 @@ public partial class ObstacleSpawner : Node2D
 
     private void OnSpawnTimerTimeout()
     {
-        var ObDef = AvaliableDefs[ (int)GD.Randi() % AvaliableDefs.Length ];
+        //var List = new List<ObstacleDef>( AvaliableDefs );
+        //List.Re
+        var i = (int)(GD.Randi() % AvaliableDefs.Length);
+        var ObDef = AvaliableDefs[ i ];
         var Scene = ObDef.Scene.Instantiate<Node2D>();
         AddSibling(Scene);
     }

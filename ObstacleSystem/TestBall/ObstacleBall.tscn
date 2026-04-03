@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dpvwy02ctnsmm"]
+
+[ext_resource type="Script" uid="uid://bm1t8qmggo7bp" path="res://ObstacleSystem/TestBall/ObstacleBall.cs" id="1_xg17d"]
+[ext_resource type="Texture2D" uid="uid://mqijf5b262ca" path="res://icon.svg" id="2_hait7"]
+[ext_resource type="Shader" uid="uid://bi2taa4hnunqs" path="res://addons/xvi_utilities/Assets/Shaders/canvas_animation.gdshader" id="2_nvwju"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_djwh2"]
+shader = ExtResource("2_nvwju")
+shader_parameter/speed = 1.0
+shader_parameter/time_offset = 0.0
+shader_parameter/rotate_speed = 5.0
+shader_parameter/rotate_offset = 0.0
+shader_parameter/wave_speed = Vector2(1, 1)
+shader_parameter/wave_offset = 0.0
+shader_parameter/wave_amplitude = Vector2(0, 0)
+shader_parameter/wave_offset_per_vertex = 5.0
+shader_parameter/pulse_speed = Vector2(1, 1)
+shader_parameter/pulse_offset = 0.0
+shader_parameter/pulse_amplitude = Vector2(0, 0)
+shader_parameter/palette_enabled = false
+
+[node name="ObstacleBall" type="Node2D" unique_id=1097025288]
+script = ExtResource("1_xg17d")
+metadata/_custom_type_script = "uid://bm1t8qmggo7bp"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1493307607]
+modulate = Color(1, 0, 1, 1)
+material = SubResource("ShaderMaterial_djwh2")
+texture = ExtResource("2_hait7")
