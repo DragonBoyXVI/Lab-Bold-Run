@@ -1,4 +1,8 @@
 
 Player
-- Does the player feel good to control? Is it responsive?
-- Player should jump off the ground, then you hold the button to fly. (lore be damned)
+- Does the player feel good to control? Is it responsive? X good enough
+- Player should jump off the ground, then you hold the button to fly. (lore be damned) X done
+- Player lose state
+
+Enviroment
+- Obsticale spawner

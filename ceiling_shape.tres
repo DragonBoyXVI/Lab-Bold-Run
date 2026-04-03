@@ -1,0 +1,4 @@
+[gd_resource type="WorldBoundaryShape2D" format=3 uid="uid://bvumnncoiy1kl"]
+
+[resource]
+normal = Vector2(0, 1)

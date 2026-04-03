@@ -28,4 +28,8 @@ public partial class GlobalVars : Node, IAutoload<GlobalVars>
     /// World gravity.
     /// </summary>
     public float Gravity = 960.0f;
+    /// <summary>
+    /// Current score.
+    /// </summary>
+    public float Score = 0f;
 }
