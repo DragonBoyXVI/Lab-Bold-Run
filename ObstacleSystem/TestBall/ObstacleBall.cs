@@ -1,10 +1,9 @@
-#pragma warning disable IDE0130
 using DragonXVI;
 using Godot;
+using LabBoldRun.Autoloads;
 using LabBoldRun.Player;
 
 namespace LabBoldRun.ObstacleSystem;
-#pragma warning restore
 
 [GlobalClass]
 public partial class ObstacleBall : Node2D
@@ -30,7 +29,7 @@ public partial class ObstacleBall : Node2D
         base._PhysicsProcess(delta);
         var dt = (float)delta;
 
-        Position -= Speed * dt;
+        Position -= Speed * dt * GlobalVars.GetIntsance().WorldSpeed;
         if (Position.X < 0f)
         {
             QueueFree();

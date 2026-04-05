@@ -5,4 +5,6 @@ Player
 - Player lose state
 
 Enviroment
-- Obsticale spawner
+- Obsticale spawner X done
+- Spawner filters obstacles by difficulty
+- Spawner spawns faster on higher scores

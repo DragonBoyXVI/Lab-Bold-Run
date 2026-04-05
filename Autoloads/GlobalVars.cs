@@ -23,7 +23,7 @@ public partial class GlobalVars : Node, IAutoload<GlobalVars>
     /// <summary>
     /// The speed the game is traveling at.
     /// </summary>
-    public float WorldSpeed = 0.0f;
+    public float WorldSpeed = 1.0f;
     /// <summary>
     /// World gravity.
     /// </summary>

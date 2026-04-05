@@ -7,9 +7,13 @@
 [ext_resource type="Script" uid="uid://cyw6v3cftg8ph" path="res://Player/States/PlayerGrounded.cs" id="5_m4ekj"]
 [ext_resource type="Script" uid="uid://b5glpwyrbl76g" path="res://Player/States/PlayerJump.cs" id="6_m4ekj"]
 [ext_resource type="Script" uid="uid://cfvfymm8kj7ng" path="res://Player/States/PlayerFlying.cs" id="7_0yn7a"]
+[ext_resource type="Script" uid="uid://dd3ttk16e1ep4" path="res://Collision/Hitbox2D.cs" id="8_8buti"]
+[ext_resource type="Script" uid="uid://b2vp2owg2immf" path="res://Player/States/PlayerDead.cs" id="8_p75x8"]
 
-[node name="PlayerBody" type="CharacterBody2D" unique_id=1281873101]
+[node name="PlayerBody" type="CharacterBody2D" unique_id=1281873101 node_paths=PackedStringArray("Hitbox", "StateMachine")]
 script = ExtResource("1_ado2q")
+Hitbox = NodePath("Hitbox2D")
+StateMachine = NodePath("CSStateMachine")
 metadata/_custom_type_script = "uid://tq50qh3nvshg"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=562778491]
@@ -37,3 +41,17 @@ metadata/_custom_type_script = "uid://b5glpwyrbl76g"
 script = ExtResource("7_0yn7a")
 Player = NodePath("../..")
 metadata/_custom_type_script = "uid://cfvfymm8kj7ng"
+
+[node name="PlayerDead" type="Node" parent="CSStateMachine" unique_id=1393203497 node_paths=PackedStringArray("Model", "Player")]
+script = ExtResource("8_p75x8")
+Model = NodePath("../../Sprite2D")
+Player = NodePath("../..")
+metadata/_custom_type_script = "uid://b2vp2owg2immf"
+
+[node name="Hitbox2D" type="Area2D" parent="." unique_id=750712012]
+script = ExtResource("8_8buti")
+IsPlayers = true
+metadata/_custom_type_script = "uid://dd3ttk16e1ep4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D" unique_id=1241124964]
+shape = ExtResource("3_gtyst")
