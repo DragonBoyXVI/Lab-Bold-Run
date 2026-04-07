@@ -46,8 +46,8 @@ Jump={
 
 2d_physics/layer_1="Body Wall"
 2d_physics/layer_2="Player Body"
-2d_physics/layer_3="Damage Area"
-2d_physics/layer_4="Collectable Area"
+2d_physics/layer_3="Damage Layer"
+2d_physics/layer_4="Collectable Layer"
 
 [physics]
 

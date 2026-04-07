@@ -7,14 +7,32 @@ namespace LabBoldRun.Player.States;
 public partial class PlayerDead : PlayerState
 {
     public static readonly StringName StateName = "PlayerDead";
+    private static GlobalVars globalVars;
 
     [Export]
     private Node2D Model;
+    [Export]
+    private Pedometer ThePedometer;
 
+    private Vector2 PreviousVelocity = Vector2.Zero;
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        if (Engine.IsEditorHint())
+        {
+            return;
+        }
+
+        globalVars ??= GlobalVars.GetIntsance();
+    }
     public override void _EnterState()
     {
         base._EnterState();
-        Player.IsWinning = false;
+
+        ThePedometer.Stop();
+        Player.Velocity = Player.Velocity + new Vector2( 0f, -200f );
     }
     public override void _Process(double delta)
     {
@@ -22,15 +40,31 @@ public partial class PlayerDead : PlayerState
         var dt = (float)delta;
 
         const float rotationSpeed = float.Tau;
-        Model.Rotate( rotationSpeed * dt * GlobalVars.GetIntsance().WorldSpeed );
+        Model.Rotate( rotationSpeed * dt * globalVars.WorldSpeed );
     }
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
         var dt = (float)delta;
 
-        var newVelocity = Player.Velocity;
-        newVelocity.Y += GlobalVars.GetIntsance().Gravity * dt;
-        Player.Velocity = newVelocity;
+
+        if (Player.IsOnFloor())
+        {
+            if (PreviousVelocity.LengthSquared() > 1f) 
+                Player.Velocity = PreviousVelocity * -0.2f * globalVars.WorldSpeed;
+        }
+        else
+        {
+            var newVelocity = Player.Velocity;
+            newVelocity.Y += globalVars.Gravity * dt;
+            Player.Velocity = newVelocity;
+        }
+        PreviousVelocity = Player.Velocity;
+
+        if ( Player.Velocity.IsZeroApprox() )
+        {
+            GD.Print("GAME!");
+            GetTree().Quit();
+        }
     }
 }

@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cfvfymm8kj7ng" path="res://Player/States/PlayerFlying.cs" id="7_0yn7a"]
 [ext_resource type="Script" uid="uid://dd3ttk16e1ep4" path="res://Collision/Hitbox2D.cs" id="8_8buti"]
 [ext_resource type="Script" uid="uid://b2vp2owg2immf" path="res://Player/States/PlayerDead.cs" id="8_p75x8"]
+[ext_resource type="Script" uid="uid://d2hmpex1aatw1" path="res://Player/Pedometer.cs" id="10_u2kjo"]
 
 [node name="PlayerBody" type="CharacterBody2D" unique_id=1281873101 node_paths=PackedStringArray("Hitbox", "StateMachine")]
 script = ExtResource("1_ado2q")
@@ -42,9 +43,10 @@ script = ExtResource("7_0yn7a")
 Player = NodePath("../..")
 metadata/_custom_type_script = "uid://cfvfymm8kj7ng"
 
-[node name="PlayerDead" type="Node" parent="CSStateMachine" unique_id=1393203497 node_paths=PackedStringArray("Model", "Player")]
+[node name="PlayerDead" type="Node" parent="CSStateMachine" unique_id=1393203497 node_paths=PackedStringArray("Model", "ThePedometer", "Player")]
 script = ExtResource("8_p75x8")
 Model = NodePath("../../Sprite2D")
+ThePedometer = NodePath("../../Pedometer")
 Player = NodePath("../..")
 metadata/_custom_type_script = "uid://b2vp2owg2immf"
 
@@ -55,3 +57,7 @@ metadata/_custom_type_script = "uid://dd3ttk16e1ep4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D" unique_id=1241124964]
 shape = ExtResource("3_gtyst")
+
+[node name="Pedometer" type="Node" parent="." unique_id=559555684]
+script = ExtResource("10_u2kjo")
+metadata/_custom_type_script = "uid://d2hmpex1aatw1"
