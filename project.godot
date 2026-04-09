@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 TranslationImporter="*uid://b8q3rdqpipl7p"
 GlobalVars="*uid://clhmf4d3wgqw2"
+LbrRadio="*uid://bqx34ltf3ih4d"
 
 [display]
 
