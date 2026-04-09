@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://bi2taa4hnunqs" path="res://addons/xvi_utilities/Assets/Shaders/canvas_animation.gdshader" id="2_nvwju"]
 [ext_resource type="Script" uid="uid://c3x43squ6b0mb" path="res://Collision/Hurtbox2D.cs" id="4_lawew"]
 [ext_resource type="Shape2D" uid="uid://oi48lpuxy2dx" path="res://Player/player_body_shape.tres" id="5_6d8oa"]
+[ext_resource type="Script" uid="uid://dd3ttk16e1ep4" path="res://Collision/Hitbox2D.cs" id="6_6d8oa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_djwh2"]
 shader = ExtResource("2_nvwju")
@@ -21,8 +22,9 @@ shader_parameter/pulse_offset = 0.0
 shader_parameter/pulse_amplitude = Vector2(0, 0)
 shader_parameter/palette_enabled = false
 
-[node name="ObstacleBall" type="Node2D" unique_id=1097025288]
+[node name="ObstacleBall" type="Node2D" unique_id=1097025288 node_paths=PackedStringArray("Hitbox")]
 script = ExtResource("1_xg17d")
+Hitbox = NodePath("Hitbox2D")
 metadata/_custom_type_script = "uid://bm1t8qmggo7bp"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1493307607]
@@ -35,4 +37,12 @@ script = ExtResource("4_lawew")
 metadata/_custom_type_script = "uid://c3x43squ6b0mb"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D" unique_id=379010039]
+shape = ExtResource("5_6d8oa")
+debug_color = Color(1, 0, 0, 0.65)
+
+[node name="Hitbox2D" type="Area2D" parent="." unique_id=155793657]
+script = ExtResource("6_6d8oa")
+metadata/_custom_type_script = "uid://dd3ttk16e1ep4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D" unique_id=1158275166]
 shape = ExtResource("5_6d8oa")

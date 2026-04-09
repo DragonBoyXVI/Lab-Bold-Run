@@ -25,5 +25,12 @@ public partial class PlayerGrounded : PlayerState
             GetWindow().SetInputAsHandled();
             return;
         }
+        else if (@event.IsActionPressed(InputNames.Strike))
+        {
+            EmitRequestStateChange(PlayerGroundAttack.StateName);
+            
+            GetWindow().SetInputAsHandled();
+            return;
+        }
     }
 }

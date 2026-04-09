@@ -9,11 +9,18 @@
 [ext_resource type="Script" uid="uid://cfvfymm8kj7ng" path="res://Player/States/PlayerFlying.cs" id="7_0yn7a"]
 [ext_resource type="Script" uid="uid://dd3ttk16e1ep4" path="res://Collision/Hitbox2D.cs" id="8_8buti"]
 [ext_resource type="Script" uid="uid://b2vp2owg2immf" path="res://Player/States/PlayerDead.cs" id="8_p75x8"]
+[ext_resource type="Script" uid="uid://dokhcyd2w37mn" path="res://Player/States/PlayerAirAttack.cs" id="9_sgeem"]
+[ext_resource type="Script" uid="uid://che7qfjw1s1me" path="res://Player/States/PlayerGroundAttack.cs" id="9_ur70c"]
 [ext_resource type="Script" uid="uid://d2hmpex1aatw1" path="res://Player/Pedometer.cs" id="10_u2kjo"]
+[ext_resource type="Script" uid="uid://c3x43squ6b0mb" path="res://Collision/Hurtbox2D.cs" id="10_vf1vv"]
 
-[node name="PlayerBody" type="CharacterBody2D" unique_id=1281873101 node_paths=PackedStringArray("Hitbox", "StateMachine")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_sgeem"]
+radius = 96.0
+
+[node name="PlayerBody" type="CharacterBody2D" unique_id=1281873101 node_paths=PackedStringArray("Hitbox", "AttackBox", "StateMachine")]
 script = ExtResource("1_ado2q")
 Hitbox = NodePath("Hitbox2D")
+AttackBox = NodePath("Hurtbox2D")
 StateMachine = NodePath("CSStateMachine")
 metadata/_custom_type_script = "uid://tq50qh3nvshg"
 
@@ -50,6 +57,24 @@ ThePedometer = NodePath("../../Pedometer")
 Player = NodePath("../..")
 metadata/_custom_type_script = "uid://b2vp2owg2immf"
 
+[node name="PlayerGroundAttack" type="Node" parent="CSStateMachine" unique_id=52624161 node_paths=PackedStringArray("AttackBox", "Hitbox", "Model", "Player")]
+script = ExtResource("9_ur70c")
+AttackDuration = 0.35
+AttackBox = NodePath("../../Hurtbox2D")
+Hitbox = NodePath("../../Hitbox2D")
+Model = NodePath("../../Sprite2D")
+Player = NodePath("../..")
+metadata/_custom_type_script = "uid://che7qfjw1s1me"
+
+[node name="PlayerAirAttack" type="Node" parent="CSStateMachine" unique_id=841367714 node_paths=PackedStringArray("AttackBox", "Hitbox", "Model", "Player")]
+script = ExtResource("9_sgeem")
+AttackDuration = 0.25
+AttackBox = NodePath("../../Hurtbox2D")
+Hitbox = NodePath("../../Hitbox2D")
+Model = NodePath("../../Sprite2D")
+Player = NodePath("../..")
+metadata/_custom_type_script = "uid://dokhcyd2w37mn"
+
 [node name="Hitbox2D" type="Area2D" parent="." unique_id=750712012]
 script = ExtResource("8_8buti")
 IsPlayers = true
@@ -57,6 +82,16 @@ metadata/_custom_type_script = "uid://dd3ttk16e1ep4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D" unique_id=1241124964]
 shape = ExtResource("3_gtyst")
+
+[node name="Hurtbox2D" type="Area2D" parent="." unique_id=766440387]
+position = Vector2(32, 0)
+script = ExtResource("10_vf1vv")
+IsPlayers = true
+metadata/_custom_type_script = "uid://c3x43squ6b0mb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D" unique_id=727530763]
+shape = SubResource("CircleShape2D_sgeem")
+debug_color = Color(1, 0, 0, 0.65)
 
 [node name="Pedometer" type="Node" parent="." unique_id=559555684]
 script = ExtResource("10_u2kjo")

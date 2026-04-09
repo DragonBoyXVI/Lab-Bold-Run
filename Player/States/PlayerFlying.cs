@@ -30,4 +30,18 @@ public partial class PlayerFlying : PlayerState
             EmitRequestStateChange(PlayerGrounded.StateName);
         }
     }
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        base._UnhandledInput(@event);
+
+        if (@event.IsEcho()) return;
+
+        if (@event.IsActionPressed(InputNames.Strike))
+        {
+            EmitRequestStateChange(PlayerAirAttack.StateName);
+
+            GetWindow().SetInputAsHandled();
+            return;
+        }
+    }
 }

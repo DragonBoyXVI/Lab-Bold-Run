@@ -50,8 +50,9 @@ public partial class PlayerDead : PlayerState
 
         if (Player.IsOnFloor())
         {
+            globalVars.WorldSpeed *= 0.8f;
             if (PreviousVelocity.LengthSquared() > 1f) 
-                Player.Velocity = PreviousVelocity * -0.2f * globalVars.WorldSpeed;
+                Player.Velocity = PreviousVelocity * new Vector2(1f, -0.8f) * float.Min(1f, globalVars.WorldSpeed);
         }
         else
         {

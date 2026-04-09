@@ -19,6 +19,8 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
     [Export]
     public Hitbox2D Hitbox;
     [Export]
+    public Hurtbox2D AttackBox;
+    [Export]
     public CSStateMachine StateMachine;
 
 
@@ -37,6 +39,7 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
         globalVars ??= GlobalVars.GetIntsance();
 
         Hitbox.TookDamage += OnHitboxTookDamage;
+        AttackBox.DisableDeferred();
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -50,6 +53,6 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
     {
         GD.Print("OUCH!");
         StateMachine.ChangeState(States.PlayerDead.StateName);
-        Hitbox.SetDeferred(Node.PropertyName.ProcessMode, (long)ProcessModeEnum.Disabled);
+        Hitbox.DisableDeferred();
     }
 }

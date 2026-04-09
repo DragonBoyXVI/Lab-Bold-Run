@@ -3,6 +3,9 @@ using LabBoldRun.Autoloads;
 
 namespace LabBoldRun.Player.States;
 
+/// <summary>
+/// This state is completely uneeded but fuck it we ball
+/// </summary>
 [GlobalClass, Tool]
 public partial class PlayerJump : PlayerState
 {
@@ -56,6 +59,14 @@ public partial class PlayerJump : PlayerState
         if (@event.IsActionPressed(InputNames.Jump))
         {
             EmitRequestStateChange(PlayerFlying.StateName);
+
+            GetWindow().SetInputAsHandled();
+            return;
+        }
+
+        if (@event.IsActionPressed(InputNames.Strike))
+        {
+            EmitRequestStateChange(PlayerAirAttack.StateName);
 
             GetWindow().SetInputAsHandled();
             return;

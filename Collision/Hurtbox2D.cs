@@ -19,6 +19,11 @@ public partial class Hurtbox2D : StrippedArea2DCS
         AreaEntered += OnAreaEntered;
     }
 
+    public override void _ShapeEnteredTree(CollisionShape2D shape)
+    {
+        shape.DebugColor = new Color(Colors.Red, 0.65f);
+    }
+
     private void OnAreaEntered(Area2D area)
     {
         if (area is Hitbox2D hitbox)

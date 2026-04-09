@@ -39,7 +39,10 @@ public abstract partial class StrippedArea2DCS : Area2D, IStrippedProperties
 		}
 	}
 
-	public virtual void _OnChildEnteredTree(Node node)
+    public void EnableDeferred() => SetDeferred(Node.PropertyName.ProcessMode, (long)ProcessModeEnum.Inherit);
+    public void DisableDeferred() => SetDeferred(Node.PropertyName.ProcessMode, (long)ProcessModeEnum.Disabled);
+
+    public virtual void _OnChildEnteredTree(Node node)
 	{
 		if ( node is CollisionShape2D d)
 		{
