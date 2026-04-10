@@ -64,8 +64,7 @@ public partial class PlayerDead : PlayerState
 
         if ( Player.Velocity.IsZeroApprox() )
         {
-            GD.Print("GAME!");
-            GetTree().Quit();
+            LBRRadio.EmitGameEnded();
         }
     }
 }

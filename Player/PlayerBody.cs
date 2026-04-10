@@ -1,6 +1,5 @@
 using DragonXVI;
 using Godot;
-using LabBoldRun.Autoloads;
 using LabBoldRun.Collision;
 
 namespace LabBoldRun.Player;
@@ -13,8 +12,6 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
 {
     public const float JumpStrength = 600f;
     public const float BoostStrength = 800f;
-
-    private static GlobalVars globalVars;
 
     [Export]
     public Hitbox2D Hitbox;
@@ -36,10 +33,14 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
             return;
         }
 
-        globalVars ??= GlobalVars.GetIntsance();
-
         Hitbox.TookDamage += OnHitboxTookDamage;
         AttackBox.DisableDeferred();
+
+        Autoloads.LBRRadio.GetIntsance().GameEnded += () =>
+        {
+            GD.Print($"GAME! Your score is {Autoloads.GlobalVars.GetIntsance().Score}!");
+            GetTree().Quit();
+        };
     }
     public override void _PhysicsProcess(double delta)
     {

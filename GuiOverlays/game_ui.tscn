@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ba2fyxrrxd3l8"]
+
+[ext_resource type="Script" uid="uid://bkxpycvg6i1v1" path="res://GuiOverlays/game_ui.gd" id="1_2xupi"]
+
+[node name="GameUI" type="Control" unique_id=980553530]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2xupi")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=434324805]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "0"
+horizontal_alignment = 1

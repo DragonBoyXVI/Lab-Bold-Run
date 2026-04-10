@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://ck13fm7bs2rx8"]
+
+[ext_resource type="Texture2D" uid="uid://b5ribwh1tf45n" path="res://addons/xvi_utilities/Assets/Images/brick.png" id="1_jo0ry"]
+[ext_resource type="Script" uid="uid://cen2pre5aafjo" path="res://GuiOverlays/main_menu.gd" id="1_vhkm0"]
+
+[node name="MainMenu" type="Control" unique_id=119799290]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vhkm0")
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=189563063]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="MarginContainer" type="MarginContainer" parent="BoxContainer" unique_id=217440880]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="BoxContainer/MarginContainer" unique_id=1527972660]
+layout_mode = 2
+texture = ExtResource("1_jo0ry")
+stretch_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="BoxContainer" unique_id=242271953]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="BoxContainer/PanelContainer" unique_id=657060539]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer/PanelContainer/MarginContainer" unique_id=442130220]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="PlayButton" type="Button" parent="BoxContainer/PanelContainer/MarginContainer/BoxContainer" unique_id=1997449653]
+unique_name_in_owner = true
+layout_mode = 2
+text = "key_play"
+
+[node name="HighScoresButton" type="Button" parent="BoxContainer/PanelContainer/MarginContainer/BoxContainer" unique_id=1933095647]
+unique_name_in_owner = true
+layout_mode = 2
+text = "key_see_high_scores"
+
+[node name="QuitButton" type="Button" parent="BoxContainer/PanelContainer/MarginContainer/BoxContainer" unique_id=1477142253]
+unique_name_in_owner = true
+layout_mode = 2
+text = "key_quit_app"
