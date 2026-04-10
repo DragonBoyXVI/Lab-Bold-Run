@@ -62,7 +62,7 @@ public partial class PlayerDead : PlayerState
         }
         PreviousVelocity = Player.Velocity;
 
-        if ( Player.Velocity.IsZeroApprox() )
+        if ( Player.Velocity.IsZeroApprox() && Player.IsOnFloor() )
         {
             LBRRadio.EmitGameEnded();
         }

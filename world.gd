@@ -12,3 +12,5 @@ func _on_radio_game_started() -> void:
 	add_child(player);
 	player.position = %PlayerSpawnSpot.global_position;
 	player.reset_physics_interpolation();
+	
+	GlobalVars.Score = 0;

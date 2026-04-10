@@ -18,6 +18,13 @@ public partial class LBRRadio : Node, IAutoload<LBRRadio>
     [Signal]
     public delegate void GameEndedEventHandler();
     public static void EmitGameEnded() => instance.EmitSignal(SignalName.GameEnded);
+    
+    [Signal]
+    public delegate void MainMenuRequestedEventHandler();
+    public static void EmitMainMenuRequested() => instance.EmitSignal(SignalName.MainMenuRequested);
+    [Signal]
+    public delegate void ScoreScreenRequestedEventHandler();
+    public static void EmitScoreScreenRequested() => instance.EmitSignal(SignalName.ScoreScreenRequested);
 
     public override void _Ready()
     {
