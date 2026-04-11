@@ -63,5 +63,10 @@ public partial class ObstacleBall : Node2D
         ObstacleSpawner.ObstacleDifficultyScore -= Difficulty;
     }
   
-    private void OnGameEnded() => QueueFree();
+    private void OnGameEnded()
+    {
+        var tween = CreateTween();
+        tween.TweenProperty(this, new NodePath("modulate"), Colors.Transparent, 1);
+        tween.TweenCallback(Callable.From(QueueFree));
+    }
 }

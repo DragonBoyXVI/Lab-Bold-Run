@@ -6,6 +6,9 @@
 	"key_quit_app": "Quit to desktop",
 	
 	"key_game_over": "GAME OVER!!!",
-	"key_your_score": "This game's score: %s",
+	"key_your_score": "This games score: %s",
 	"key_main_menu": "Return to main menu (press SPACE)",
+	
+	"key_ask_save_score": "Save your score?",
+	"key_ask_name": "Enter your name! (up to 10 characters)"
 }

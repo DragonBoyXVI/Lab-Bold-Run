@@ -9,6 +9,7 @@ const DEFAULT_TRANSLATION := "en";
 
 func _ready() -> void:
 	
+	ScoreFileHandler.save_score("test", 69, "sex/sex/sex");
 	LbrRadio.GameStarted.connect( _on_radio_game_started );
 	
 	# loads translations
