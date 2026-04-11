@@ -7,13 +7,13 @@ namespace LabBoldRun.ObstacleSystem;
 [GlobalClass]
 public partial class ObstacleSpawner : Node2D
 {
+    public static long ObstacleDifficultyScore = 0;
     private static GlobalVars globalVars;
 
     [Export]
-    public ObstacleDef[] AvaliableDefs = [];
+    public PackedScene[] ObstacleScenes = [];
 
     private Timer SpawnTimer;
-    private int SpawnCount = 0;
 
     public override void _Ready()
     {
@@ -35,30 +35,34 @@ public partial class ObstacleSpawner : Node2D
             ProcessCallback = Timer.TimerProcessCallback.Physics,
         };
         SpawnTimer.Timeout += OnSpawnTimerTimeout;
-        AddChild(SpawnTimer);
+        AddChild(SpawnTimer, false, InternalMode.Front);
 
-        LBRRadio.GetIntsance().GameStarted += () => SpawnTimer.Start();
-        LBRRadio.GetIntsance().GameEnded += () => SpawnTimer.Stop();
+        LBRRadio.GetIntsance().GameStarted += OnRadioGameStarted;
+        LBRRadio.GetIntsance().GameEnded += OnRadioGameEnded;
     }
 
     private void OnSpawnTimerTimeout()
     {
         //var List = new List<ObstacleDef>( AvaliableDefs );
         //List.Re
-        GD.Print(SpawnCount);
 
-        if (SpawnCount > (globalVars.Score / 25))
+        if (ObstacleDifficultyScore > (globalVars.Score / 25))
         {
             return;
         }
 
-        SpawnCount++;
-        var i = (int)(GD.Randi() % AvaliableDefs.Length);
-        var ObDef = AvaliableDefs[ i ];
-        var Scene = ObDef.Scene.Instantiate<Node2D>();
-        Scene.TreeExited += OnSpawnedObstacleExitTree;
+        var i = (int)(GD.Randi() % ObstacleScenes.Length);
+        var ObScene = ObstacleScenes[ i ];
+        var Scene = ObScene.Instantiate<Node2D>();
         AddSibling(Scene);
     }
-
-    private void OnSpawnedObstacleExitTree() => SpawnCount--;
+    private void OnRadioGameStarted()
+    {
+        ObstacleDifficultyScore = 0;
+        SpawnTimer.Start();
+    }
+    private void OnRadioGameEnded()
+    {
+        SpawnTimer.Stop();
+    }
 }

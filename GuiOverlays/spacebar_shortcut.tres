@@ -1,0 +1,8 @@
+[gd_resource type="Shortcut" format=3 uid="uid://c2g6hpsj0o2an"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_vhkm0"]
+action = &"Jump"
+pressed = true
+
+[resource]
+events = [SubResource("InputEventAction_vhkm0")]

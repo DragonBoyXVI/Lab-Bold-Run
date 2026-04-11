@@ -1,3 +1,4 @@
+using DragonXVI;
 using Godot;
 using LabBoldRun.Autoloads;
 
@@ -65,6 +66,7 @@ public partial class PlayerDead : PlayerState
         if ( Player.Velocity.IsZeroApprox() && Player.IsOnFloor() )
         {
             LBRRadio.EmitGameEnded();
+            XVIUtil.DisableNodeProcesses(this);
         }
     }
 }

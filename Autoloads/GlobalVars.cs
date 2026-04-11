@@ -39,5 +39,4 @@ public partial class GlobalVars : Node, IAutoload<GlobalVars>
     /// </summary>
     public double Distance = 0.0;
 
-    
 }

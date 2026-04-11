@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bduhdcjq02scl"]
+
+[ext_resource type="Script" uid="uid://dfd03keea8i11" path="res://GuiOverlays/game_over_screen.gd" id="1_k518h"]
+[ext_resource type="Shortcut" uid="uid://c2g6hpsj0o2an" path="res://GuiOverlays/spacebar_shortcut.tres" id="1_oqcu7"]
+
+[node name="GameOverScreen" type="Control" unique_id=30599467]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k518h")
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=439046061]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="GameOverLabel" type="Label" parent="BoxContainer" unique_id=1690650670]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "key_game_over"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="BoxContainer" unique_id=1548363242]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 2
+text = "key_your_score"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="Button" parent="BoxContainer" unique_id=440256399]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+shortcut = ExtResource("1_oqcu7")
+text = "key_main_menu"

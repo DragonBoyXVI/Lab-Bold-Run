@@ -1,4 +1,5 @@
 extends Node2D
+# this node persists for the whole game.
 
 const PLAYER_SCENE: PackedScene = preload( "res://Player/player_body.tscn" );
 
@@ -14,3 +15,4 @@ func _on_radio_game_started() -> void:
 	player.reset_physics_interpolation();
 	
 	GlobalVars.Score = 0;
+	GlobalVars.WorldSpeed = 1.0;

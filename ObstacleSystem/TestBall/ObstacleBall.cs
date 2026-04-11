@@ -10,6 +10,8 @@ namespace LabBoldRun.ObstacleSystem;
 [GlobalClass]
 public partial class ObstacleBall : Node2D
 {
+    private const int Difficulty = 1;
+
     private static readonly Vector2 Speed = new( 100f, 0f );
 
     [Export]
@@ -26,11 +28,17 @@ public partial class ObstacleBall : Node2D
         }
 
         PlayerBody Player = (PlayerBody)GetTree().GetNodesInGroup(GroupNames.PlayerNode)[0];
-        Position = Player.Position + (Vector2.Right * 1000);
+        if (IsInstanceValid(Player))
+            Position = Player.Position + (Vector2.Right * 1000);
 
-        Hitbox.TookDamage += () => QueueFree();
+        Hitbox.TookDamage += () => 
+        {
+            QueueFree();
+            GlobalVars.GetIntsance().Score++;
+        };
+
+        LBRRadio.GetIntsance().GameEnded += OnGameEnded;
     }
-
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -42,4 +50,26 @@ public partial class ObstacleBall : Node2D
             QueueFree();
         }
     }
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+
+        ObstacleSpawner.ObstacleDifficultyScore += Difficulty;
+    }
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        ObstacleSpawner.ObstacleDifficultyScore -= Difficulty;
+    }
+    public override void _Notification(int what)
+    {
+        base._Notification(what);
+        if (what == NotificationPredelete)
+        {
+            LBRRadio.GetIntsance().GameEnded -= OnGameEnded;
+        }
+    }
+
+    private void OnGameEnded() => QueueFree();
 }

@@ -1,6 +1,7 @@
 using DragonXVI;
 using Godot;
 using LabBoldRun.Collision;
+using LabBoldRun.Autoloads;
 
 namespace LabBoldRun.Player;
 
@@ -36,11 +37,9 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
         Hitbox.TookDamage += OnHitboxTookDamage;
         AttackBox.DisableDeferred();
 
-        Autoloads.LBRRadio.GetIntsance().GameEnded += () =>
-        {
-            GD.Print($"GAME! Your score is {Autoloads.GlobalVars.GetIntsance().Score}!");
-            GetTree().Quit();
-        };
+        //yk what sure it works.
+        LBRRadio.GetIntsance().Connect(LBRRadio.SignalName.GameEnded, Callable.From(QueueFree));
+        //LBRRadio.GetIntsance().GameEnded += OnGameEnded;
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -49,11 +48,22 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
 
         MoveAndSlide();
     }
+    //public override void _Notification(int what)
+    //{
+    //    //Yes, in c# you do need to manually disconnect from CUSTOM signals.
+    //    //unless you use Connect() bc ??????
+    //    base._Notification(what);
+    //    if (what == NotificationPredelete)
+    //    {
+    //        LBRRadio.GetIntsance().GameEnded -= OnGameEnded;
+    //    }
+    //}
 
     private void OnHitboxTookDamage()
     {
-        GD.Print("OUCH!");
         StateMachine.ChangeState(States.PlayerDead.StateName);
         Hitbox.DisableDeferred();
     }
+
+    private void OnGameEnded() => QueueFree();
 }
