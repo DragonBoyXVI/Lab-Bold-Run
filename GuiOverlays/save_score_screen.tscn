@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dlhw0348gvqcp"]
 
+[ext_resource type="Script" uid="uid://d4juy2sws4ei0" path="res://GuiOverlays/save_score_screen.gd" id="1_6sexh"]
+
 [node name="SaveScoreScreen" type="Control" unique_id=1942591343]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +9,57 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6sexh")
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=1900226547]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="PanelContainer" type="PanelContainer" parent="BoxContainer" unique_id=1119310155]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer/PanelContainer" unique_id=464343718]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="ScoreLabel" type="Label" parent="BoxContainer/PanelContainer/BoxContainer" unique_id=1596365847]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "score"
+horizontal_alignment = 1
+
+[node name="AskLabel" type="Label" parent="BoxContainer/PanelContainer/BoxContainer" unique_id=1964072981]
+layout_mode = 2
+text = "key_ask_name"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="BoxContainer/PanelContainer/BoxContainer" unique_id=218386091]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Your name here..."
+max_length = 10
+expand_to_text_length = true
+
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer/PanelContainer/BoxContainer" unique_id=1814915825]
+layout_mode = 2
+alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="BoxContainer/PanelContainer/BoxContainer/BoxContainer" unique_id=547304470]
+unique_name_in_owner = true
+layout_mode = 2
+text = "key_main_menu"
+
+[node name="SaveButton" type="Button" parent="BoxContainer/PanelContainer/BoxContainer/BoxContainer" unique_id=1494128269]
+unique_name_in_owner = true
+layout_mode = 2
+text = "save button"

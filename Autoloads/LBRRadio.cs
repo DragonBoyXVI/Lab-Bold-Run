@@ -25,6 +25,9 @@ public partial class LBRRadio : Node, IAutoload<LBRRadio>
     [Signal]
     public delegate void ScoreScreenRequestedEventHandler();
     public static void EmitScoreScreenRequested() => instance.EmitSignal(SignalName.ScoreScreenRequested);
+    [Signal]
+    public delegate void ScoreSaveScreenRequestedEventHandler();
+    public static void EmitScoreSaveScreenRequested() => instance.EmitSignal(SignalName.ScoreSaveScreenRequested);
 
     public override void _Ready()
     {

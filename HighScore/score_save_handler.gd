@@ -6,9 +6,9 @@ class_name ScoreFileHandler;
 const SAVE_DIR := "user://Scores";
 
 const SCORE_FILE_CONTENTS := "{
-	\"name\": {0},
-	\"score\": {1},
-	\"date\": {2}
+	\"name\": \"{0}\",
+	\"score\": \"{1}\",
+	\"date\": \"{2}\"
 }"
 const FILE_NAME := "score_%s.json";
 
