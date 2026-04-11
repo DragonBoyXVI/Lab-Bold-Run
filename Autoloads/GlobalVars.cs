@@ -1,5 +1,6 @@
 using DragonXVI;
 using Godot;
+using LabBoldRun.Player;
 
 namespace LabBoldRun.Autoloads;
 
@@ -19,6 +20,8 @@ public partial class GlobalVars : Node, IAutoload<GlobalVars>
             throw new System.Exception("Why are you making an instance of this autoload?????");
         }
     }
+
+    public PlayerBody PlayerNode = null;
 
     /// <summary>
     /// The speed the game is traveling at.

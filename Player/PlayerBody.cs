@@ -37,8 +37,9 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
         Hitbox.TookDamage += OnHitboxTookDamage;
         AttackBox.DisableDeferred();
 
+        GlobalVars.GetIntsance().PlayerNode = this;
         //yk what sure it works.
-        LBRRadio.GetIntsance().Connect(LBRRadio.SignalName.GameEnded, Callable.From(QueueFree));
+        LBRRadio.GetIntsance().Connect(LBRRadio.SignalName.GameEnded, Callable.From(OnGameEnded));
         //LBRRadio.GetIntsance().GameEnded += OnGameEnded;
     }
     public override void _PhysicsProcess(double delta)
@@ -65,5 +66,9 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
         Hitbox.DisableDeferred();
     }
 
-    private void OnGameEnded() => QueueFree();
+    private void OnGameEnded()
+    {
+        GlobalVars.GetIntsance().PlayerNode = null;
+        QueueFree();
+    }
 }

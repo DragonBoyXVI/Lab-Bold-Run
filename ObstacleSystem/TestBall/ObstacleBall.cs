@@ -27,7 +27,7 @@ public partial class ObstacleBall : Node2D
             return;
         }
 
-        PlayerBody Player = (PlayerBody)GetTree().GetNodesInGroup(GroupNames.PlayerNode)[0];
+        PlayerBody Player = GlobalVars.GetIntsance().PlayerNode;
         if (IsInstanceValid(Player))
             Position = Player.Position + (Vector2.Right * 1000);
 
@@ -37,7 +37,7 @@ public partial class ObstacleBall : Node2D
             GlobalVars.GetIntsance().Score++;
         };
 
-        LBRRadio.GetIntsance().GameEnded += OnGameEnded;
+        LBRRadio.GetIntsance().Connect(LBRRadio.SignalName.GameEnded, Callable.From(OnGameEnded));
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -62,14 +62,6 @@ public partial class ObstacleBall : Node2D
 
         ObstacleSpawner.ObstacleDifficultyScore -= Difficulty;
     }
-    public override void _Notification(int what)
-    {
-        base._Notification(what);
-        if (what == NotificationPredelete)
-        {
-            LBRRadio.GetIntsance().GameEnded -= OnGameEnded;
-        }
-    }
-
+  
     private void OnGameEnded() => QueueFree();
 }

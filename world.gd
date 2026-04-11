@@ -3,9 +3,17 @@ extends Node2D
 
 const PLAYER_SCENE: PackedScene = preload( "res://Player/player_body.tscn" );
 
+const TRANSLATIONS_RES_PATH := "res://Translations";
+const TRANSLATIONS_USER_PATH := "user://Translations";
+const DEFAULT_TRANSLATION := "en";
+
 func _ready() -> void:
 	
 	LbrRadio.GameStarted.connect( _on_radio_game_started );
+	
+	# loads translations
+	TranslationImporter.parse_file_for_dict(TRANSLATIONS_RES_PATH + "/en.json");
+	TranslationServer.set_locale(DEFAULT_TRANSLATION);
 
 func _on_radio_game_started() -> void:
 	

@@ -19,5 +19,5 @@ func _on_radio_game_ended() -> void:
 	
 	XVIControlAnimation.open_window(self);
 	
-	const fallback_string := "key_your_score %s";
-	score_label.text = fallback_string % GlobalVars.Score;
+	const key_string := "key_your_score";
+	score_label.text = tr(key_string) % GlobalVars.Score;

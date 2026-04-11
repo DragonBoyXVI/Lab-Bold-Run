@@ -1,0 +1,11 @@
+{
+	"locale": "en",
+	
+	"key_play": "Play! (press SPACE)",
+	"key_see_high_scores": "View highscores",
+	"key_quit_app": "Quit to desktop",
+	
+	"key_game_over": "GAME OVER!!!",
+	"key_your_score": "This game's score: %s",
+	"key_main_menu": "Return to main menu (press SPACE)",
+}
