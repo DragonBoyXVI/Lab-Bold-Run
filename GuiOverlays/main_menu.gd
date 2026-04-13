@@ -18,7 +18,9 @@ func _on_play_button_pressed() -> void:
 	XVIControlAnimation.close_window(self);
 
 func _on_high_score_button_pressed() -> void:
-	print("IMPLEMENT ME!!!!");
+	
+	LbrRadio.EmitScoreScreenRequested();
+	XVIControlAnimation.close_window(self);
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit();

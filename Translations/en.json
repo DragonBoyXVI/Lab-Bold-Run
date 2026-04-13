@@ -13,5 +13,10 @@
 	"key_ask_name": "Enter your name below! (up to 10 characters)",
 	"key_save": "Save Score",
 	"key_saved": "Saved!",
-	"key_save_fail": "Failed to save this score!"
+	"key_save_fail": "Failed to save this score!",
+	"key_loading_wait": "Loading, please wait...",
+	
+	"key_name": "Name: %s",
+	"key_score": "Score: %s",
+	"key_date": "Date: %s"
 }

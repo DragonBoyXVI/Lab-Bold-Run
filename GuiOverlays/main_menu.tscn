@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b5ribwh1tf45n" path="res://addons/xvi_utilities/Assets/Images/brick.png" id="1_jo0ry"]
 [ext_resource type="Script" uid="uid://cen2pre5aafjo" path="res://GuiOverlays/main_menu.gd" id="1_vhkm0"]
 [ext_resource type="Shortcut" uid="uid://c2g6hpsj0o2an" path="res://GuiOverlays/spacebar_shortcut.tres" id="3_n23pq"]
+[ext_resource type="Texture2D" uid="uid://bbic7bafx4nan" path="res://GuiOverlays/space_bar_texture.tres" id="4_6e37x"]
 
 [node name="MainMenu" type="Control" unique_id=119799290]
 layout_mode = 3
@@ -57,6 +58,7 @@ unique_name_in_owner = true
 layout_mode = 2
 shortcut = ExtResource("3_n23pq")
 text = "key_play"
+icon = ExtResource("4_6e37x")
 
 [node name="HighScoresButton" type="Button" parent="BoxContainer/PanelContainer/MarginContainer/BoxContainer" unique_id=1933095647]
 unique_name_in_owner = true

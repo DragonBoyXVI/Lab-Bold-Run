@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bduhdcjq02scl" path="res://GuiOverlays/game_over_screen.tscn" id="4_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://dpvwy02ctnsmm" path="res://ObstacleSystem/TestBall/ObstacleBall.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dlhw0348gvqcp" path="res://GuiOverlays/save_score_screen.tscn" id="5_ioo17"]
+[ext_resource type="PackedScene" uid="uid://bl7t738p3208l" path="res://GuiOverlays/Saved Score Viewer/saved_score_viewer.tscn" id="6_wse8f"]
 
 [node name="World" type="Node2D" unique_id=399303491]
 script = ExtResource("1_036b0")
@@ -35,6 +36,9 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="SaveScoreScreen" parent="CanvasLayer/Control" unique_id=1942591343 instance=ExtResource("5_ioo17")]
+layout_mode = 1
+
+[node name="SavedScoreViewer" parent="CanvasLayer/Control" unique_id=1541129313 instance=ExtResource("6_wse8f")]
 layout_mode = 1
 
 [node name="BoundryBody" type="StaticBody2D" parent="." unique_id=2133992709]

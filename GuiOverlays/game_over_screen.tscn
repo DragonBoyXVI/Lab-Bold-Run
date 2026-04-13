@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfd03keea8i11" path="res://GuiOverlays/game_over_screen.gd" id="1_k518h"]
 [ext_resource type="Shortcut" uid="uid://c2g6hpsj0o2an" path="res://GuiOverlays/spacebar_shortcut.tres" id="1_oqcu7"]
+[ext_resource type="Texture2D" uid="uid://bbic7bafx4nan" path="res://GuiOverlays/space_bar_texture.tres" id="3_sw14s"]
 
 [node name="GameOverScreen" type="Control" unique_id=30599467]
 layout_mode = 3
@@ -49,6 +50,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 shortcut = ExtResource("1_oqcu7")
 text = "key_main_menu"
+icon = ExtResource("3_sw14s")
 
 [node name="ScoreButton" type="Button" parent="BoxContainer/VBoxContainer" unique_id=304468787]
 unique_name_in_owner = true
