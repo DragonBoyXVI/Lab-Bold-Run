@@ -25,7 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MainMenu" parent="CanvasLayer/Control" unique_id=119799290 instance=ExtResource("1_aqk2v")]
-visible = false
 layout_mode = 1
 
 [node name="GameUI" parent="CanvasLayer/Control" unique_id=980553530 instance=ExtResource("2_036b0")]
@@ -33,12 +32,15 @@ visible = false
 layout_mode = 1
 
 [node name="GameOverScreen" parent="CanvasLayer/Control" unique_id=30599467 instance=ExtResource("4_gbfbk")]
+visible = false
 layout_mode = 1
 
 [node name="SaveScoreScreen" parent="CanvasLayer/Control" unique_id=1942591343 instance=ExtResource("5_ioo17")]
+visible = false
 layout_mode = 1
 
 [node name="SavedScoreViewer" parent="CanvasLayer/Control" unique_id=1541129313 instance=ExtResource("6_wse8f")]
+visible = false
 layout_mode = 1
 
 [node name="BoundryBody" type="StaticBody2D" parent="." unique_id=2133992709]

@@ -12,6 +12,8 @@ func _ready() -> void:
 	quit_button.pressed.connect( _on_quit_button_pressed );
 	
 	LbrRadio.MainMenuRequested.connect( _on_radio_main_menu_requested );
+	
+	%VersionLabel.text = ProjectSettings.get_setting("application/config/version");
 
 func _on_play_button_pressed() -> void:
 	LbrRadio.EmitGameStarted();
@@ -23,6 +25,7 @@ func _on_high_score_button_pressed() -> void:
 	XVIControlAnimation.close_window(self);
 
 func _on_quit_button_pressed() -> void:
+	XVIControlAnimation.close_window(self);
 	get_tree().quit();
 
 func _on_radio_main_menu_requested() -> void:
