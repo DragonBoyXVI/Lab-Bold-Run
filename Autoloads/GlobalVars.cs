@@ -21,6 +21,8 @@ public partial class GlobalVars : Node, IAutoload<GlobalVars>
         }
     }
 
+    public const float XSpeed = 300f;
+
     public PlayerBody PlayerNode = null;
 
     /// <summary>

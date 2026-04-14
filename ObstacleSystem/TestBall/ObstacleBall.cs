@@ -12,7 +12,7 @@ public partial class ObstacleBall : Node2D
 {
     private const int Difficulty = 1;
 
-    private static readonly Vector2 Speed = new( 100f, 0f );
+    private static float Speed = 1f;
 
     [Export]
     private Hitbox2D Hitbox;
@@ -44,8 +44,10 @@ public partial class ObstacleBall : Node2D
         base._PhysicsProcess(delta);
         var dt = (float)delta;
 
-        Position -= Speed * dt * GlobalVars.GetIntsance().WorldSpeed;
-        if (Position.X < 0f)
+        var newPosition = Position;
+        newPosition.X -= GlobalVars.XSpeed * Speed * dt * GlobalVars.GetIntsance().WorldSpeed;
+        Position = newPosition;
+        if (newPosition.X < 0f)
         {
             QueueFree();
         }
