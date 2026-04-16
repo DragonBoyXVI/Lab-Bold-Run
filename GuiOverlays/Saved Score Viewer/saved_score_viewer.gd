@@ -9,6 +9,7 @@ func _ready() -> void:
 	
 	hide();
 	%MainMenuButton.pressed.connect( _on_main_menu_button_pressed );
+	%OpenFileLocationButton.pressed.connect( _on_open_file_location_button_pressed );
 	LbrRadio.ScoreScreenRequested.connect( _on_radio_score_screen_requested );
 
 
@@ -25,6 +26,10 @@ func populate_board() -> void:
 		score_panel_container.add_child( score_panel );
 		score_panel.set_data( score );
 
+
+func _on_open_file_location_button_pressed() -> void:
+	var path := ProjectSettings.globalize_path(ScoreFileHandler.SAVE_DIR);
+	OS.shell_open(path);
 
 func _on_radio_score_screen_requested() -> void:
 	

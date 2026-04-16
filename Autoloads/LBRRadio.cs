@@ -28,6 +28,12 @@ public partial class LBRRadio : Node, IAutoload<LBRRadio>
     [Signal]
     public delegate void ScoreSaveScreenRequestedEventHandler();
     public static void EmitScoreSaveScreenRequested() => instance.EmitSignal(SignalName.ScoreSaveScreenRequested);
+    [Signal]
+    public delegate void ObstacleAddedEventHandler(long diffScore);
+    public static void EmitObstacleAdded(long diffScore) => instance.EmitSignal(SignalName.ObstacleAdded, diffScore);
+    [Signal]
+    public delegate void ObstacleRemovedEventHandler(long diffScore);
+    public static void EmitObstacleRemoved(long diffScore) => instance.EmitSignal(SignalName.ObstacleRemoved, diffScore);
 
     public override void _Ready()
     {

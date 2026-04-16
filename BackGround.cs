@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DragonXVI;
 using Godot;
 using LabBoldRun.Autoloads;
 
@@ -8,63 +9,38 @@ public partial class BackGround : Parallax2D
 {
     private static GlobalVars globalVars;
 
-    private const int ScorePerBackground = 5;
-
-    private readonly List<TileMapLayer> TileMaps = [];
-    private int BackgroundIndex = 0;
-    private int NextScoreReq = 0;
+    private readonly List<Node2D> BGList = [];
 
     public override void _Ready()
     {
         base._Ready();
+        if (Engine.IsEditorHint())
+        {
+            XVIUtil.DisableNodeProcesses(this);
+            return;
+        }
 
         globalVars ??= GlobalVars.GetIntsance();
 
-        foreach (Node child in GetChildren())
+        foreach(Node child in GetChildren())
         {
-            if (child is TileMapLayer tileMap)
+            if (child is Node2D bg)
             {
-                TileMaps.Add(tileMap);
-                tileMap.Hide();
+                AddBG(bg);
             }
         }
 
-        TileMaps[0].Show();
-        NextScoreReq = ScorePerBackground;
-
-        SetProcess(false);
-
-        LBRRadio.GetIntsance().Connect(LBRRadio.SignalName.GameStarted, Callable.From(OnGameStart));
-        LBRRadio.GetIntsance().Connect(LBRRadio.SignalName.GameEnded, Callable.From(OnGameEnd));
+        BGList[0].Modulate = Colors.White;
     }
 
-    public override void _Process(double delta)
+    private void AddBG(Node2D bg)
     {
-        base._Process(delta);
-        var dt = (float)delta;
-
-        var offset = ScreenOffset;
-        offset.X += GlobalVars.XSpeed * globalVars.WorldSpeed * dt;
-        ScreenOffset = offset;
-
-        if (globalVars.Score > NextScoreReq)
-        {
-            if (BackgroundIndex < TileMaps.Count - 1)
-            {
-                TileMaps[BackgroundIndex].Hide();
-                BackgroundIndex++;
-                TileMaps[BackgroundIndex].Show();
-                NextScoreReq = ScorePerBackground * BackgroundIndex;
-            }
-        }
+        BGList.Add(bg);
+        bg.Modulate = Colors.Transparent;
     }
 
-    private void OnGameStart()
+    private void SetBG(int index)
     {
-        SetProcess(true);
-    }
-    private void OnGameEnd()
-    {
-        SetProcess(false);
+        
     }
 }

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c3x43squ6b0mb" path="res://Collision/Hurtbox2D.cs" id="4_lawew"]
 [ext_resource type="Shape2D" uid="uid://oi48lpuxy2dx" path="res://Player/player_body_shape.tres" id="5_6d8oa"]
 [ext_resource type="Script" uid="uid://dd3ttk16e1ep4" path="res://Collision/Hitbox2D.cs" id="6_6d8oa"]
+[ext_resource type="Script" uid="uid://baaegjqe7r644" path="res://ObstacleSystem/DifficultyNode.cs" id="7_7glvj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_djwh2"]
 shader = ExtResource("2_nvwju")
@@ -46,3 +47,8 @@ metadata/_custom_type_script = "uid://dd3ttk16e1ep4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D" unique_id=1158275166]
 shape = ExtResource("5_6d8oa")
+
+[node name="DifficultyNode" type="Node" parent="." unique_id=1394291491]
+script = ExtResource("7_7glvj")
+Difficulty = 1
+metadata/_custom_type_script = "uid://baaegjqe7r644"

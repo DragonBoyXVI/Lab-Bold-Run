@@ -27,7 +27,7 @@ vertical = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
-vertical = true
+alignment = 1
 
 [node name="MainMenuButton" type="Button" parent="BoxContainer/ButtonContainer" unique_id=2090178287]
 unique_name_in_owner = true
@@ -35,6 +35,11 @@ layout_mode = 2
 shortcut = ExtResource("2_1muvk")
 text = "key_main_menu"
 icon = ExtResource("3_6sqej")
+
+[node name="OpenFileLocationButton" type="Button" parent="BoxContainer/ButtonContainer" unique_id=1876725670]
+unique_name_in_owner = true
+layout_mode = 2
+text = "key_open_file_location"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=433608417]
 layout_mode = 1

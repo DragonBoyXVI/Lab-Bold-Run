@@ -10,8 +10,6 @@ namespace LabBoldRun.ObstacleSystem;
 [GlobalClass]
 public partial class ObstacleBall : Node2D
 {
-    private const int Difficulty = 1;
-
     private static float Speed = 1f;
 
     [Export]
@@ -30,6 +28,7 @@ public partial class ObstacleBall : Node2D
         PlayerBody Player = GlobalVars.GetIntsance().PlayerNode;
         if (IsInstanceValid(Player))
             Position = Player.Position + (Vector2.Right * 1000);
+        ResetPhysicsInterpolation();
 
         Hitbox.TookDamage += () => 
         {
@@ -37,7 +36,9 @@ public partial class ObstacleBall : Node2D
             GlobalVars.GetIntsance().Score++;
         };
 
-        LBRRadio.GetIntsance().Connect(LBRRadio.SignalName.GameEnded, Callable.From(OnGameEnded));
+        var radio = LBRRadio.GetIntsance();
+        radio.Connect(LBRRadio.SignalName.GameEnded, Callable.From(OnGameEnded));
+        radio.Connect(LBRRadio.SignalName.GameStarted, Callable.From(OnGameStarted));
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -52,19 +53,8 @@ public partial class ObstacleBall : Node2D
             QueueFree();
         }
     }
-    public override void _EnterTree()
-    {
-        base._EnterTree();
 
-        ObstacleSpawner.ObstacleDifficultyScore += Difficulty;
-    }
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-
-        ObstacleSpawner.ObstacleDifficultyScore -= Difficulty;
-    }
-  
+    private void OnGameStarted() => QueueFree();
     private void OnGameEnded()
     {
         var tween = CreateTween();

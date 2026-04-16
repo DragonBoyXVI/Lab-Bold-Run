@@ -1,3 +1,4 @@
+using System;
 using DragonXVI;
 using Godot;
 using LabBoldRun.Autoloads;
@@ -34,11 +35,14 @@ public partial class ObstacleSpawner : Node2D
             WaitTime = 0.5,
             ProcessCallback = Timer.TimerProcessCallback.Physics,
         };
-        SpawnTimer.Timeout += OnSpawnTimerTimeout;
+        SpawnTimer.Connect(Timer.SignalName.Timeout, Callable.From(OnSpawnTimerTimeout), (uint)ConnectFlags.Deferred);
         AddChild(SpawnTimer, false, InternalMode.Front);
 
-        LBRRadio.GetIntsance().GameStarted += OnRadioGameStarted;
-        LBRRadio.GetIntsance().GameEnded += OnRadioGameEnded;
+        var radio = LBRRadio.GetIntsance();
+        radio.Connect(LBRRadio.SignalName.GameStarted, Callable.From(OnRadioGameStarted), (uint)ConnectFlags.Deferred);
+        radio.Connect(LBRRadio.SignalName.GameEnded, Callable.From(OnRadioGameEnded));
+        radio.Connect(LBRRadio.SignalName.ObstacleAdded, new Callable(this, nameof(OnRadioObstacleAdded)));
+        radio.Connect(LBRRadio.SignalName.ObstacleRemoved, new Callable(this, nameof(OnRadioObstacleRemoved)));
     }
 
     private void OnSpawnTimerTimeout()
@@ -56,6 +60,16 @@ public partial class ObstacleSpawner : Node2D
         var Scene = ObScene.Instantiate<Node2D>();
         AddSibling(Scene);
     }
+    private static void OnRadioObstacleAdded(long diffScore)
+    {
+        ObstacleDifficultyScore += diffScore;
+    }
+
+    private static void OnRadioObstacleRemoved(long diffScore)
+    {
+        ObstacleDifficultyScore = long.Max(0, ObstacleDifficultyScore - diffScore);
+    }
+
     private void OnRadioGameStarted()
     {
         ObstacleDifficultyScore = 0;

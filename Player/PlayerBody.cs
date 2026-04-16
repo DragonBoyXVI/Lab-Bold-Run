@@ -41,6 +41,7 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
         //yk what sure it works.
         LBRRadio.GetIntsance().Connect(LBRRadio.SignalName.GameEnded, Callable.From(OnGameEnded));
         //LBRRadio.GetIntsance().GameEnded += OnGameEnded;
+        LBRRadio.GetIntsance().Connect(LBRRadio.SignalName.GameStarted, Callable.From(QueueFree));
     }
     public override void _PhysicsProcess(double delta)
     {

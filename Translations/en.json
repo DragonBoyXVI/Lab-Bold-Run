@@ -15,6 +15,7 @@
 	"key_saved": "Saved!",
 	"key_save_fail": "Failed to save this score!",
 	"key_loading_wait": "Loading, please wait...",
+	"key_open_file_location": "Open File location",
 	
 	"key_name": "Name: %s",
 	"key_score": "Score: %s",
