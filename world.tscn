@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dpvwy02ctnsmm" path="res://ObstacleSystem/TestBall/ObstacleBall.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dlhw0348gvqcp" path="res://GuiOverlays/save_score_screen.tscn" id="5_ioo17"]
 [ext_resource type="PackedScene" uid="uid://bl7t738p3208l" path="res://GuiOverlays/Saved Score Viewer/saved_score_viewer.tscn" id="6_wse8f"]
+[ext_resource type="PackedScene" uid="uid://chx1bne3cgiuq" path="res://GuiOverlays/pause_menu.tscn" id="9_2o6r5"]
 [ext_resource type="Shader" uid="uid://c5kcwn0fsyqph" path="res://addons/xvi_utilities/Assets/Shaders/screen_hue.gdshader" id="12_k3n1d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2o6r5"]
@@ -65,6 +66,10 @@ visible = false
 layout_mode = 1
 
 [node name="SavedScoreViewer" parent="CanvasLayer/Control" unique_id=1541129313 instance=ExtResource("6_wse8f")]
+visible = false
+layout_mode = 1
+
+[node name="PauseMenu" parent="CanvasLayer/Control" unique_id=1701867291 instance=ExtResource("9_2o6r5")]
 visible = false
 layout_mode = 1
 

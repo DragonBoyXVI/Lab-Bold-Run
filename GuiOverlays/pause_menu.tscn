@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://chx1bne3cgiuq"]
+
+[ext_resource type="Shortcut" uid="uid://c2g6hpsj0o2an" path="res://GuiOverlays/spacebar_shortcut.tres" id="1_3eccy"]
+[ext_resource type="Script" uid="uid://tc7due03wka3" path="res://GuiOverlays/pause_menu.gd" id="1_hyyh1"]
+[ext_resource type="Texture2D" uid="uid://bbic7bafx4nan" path="res://GuiOverlays/space_bar_texture.tres" id="2_hyyh1"]
+
+[node name="PauseMenu" type="Control" unique_id=1701867291]
+process_mode = 2
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hyyh1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1126079285]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=492353917]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1656860923]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="CenterContainer/PanelContainer" unique_id=1849015112]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="ResumeButton" type="Button" parent="CenterContainer/PanelContainer/BoxContainer" unique_id=1587346621]
+unique_name_in_owner = true
+layout_mode = 2
+shortcut = ExtResource("1_3eccy")
+text = "key_resume"
+icon = ExtResource("2_hyyh1")
+
+[node name="MenuButton" type="Button" parent="CenterContainer/PanelContainer/BoxContainer" unique_id=106378840]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+disabled = true
+text = "key_main_menu"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/BoxContainer" unique_id=513218544]
+unique_name_in_owner = true
+layout_mode = 2
+text = "key_quit_app"
