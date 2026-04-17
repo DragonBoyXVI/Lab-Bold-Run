@@ -27,7 +27,7 @@ public partial class ObstacleBall : Node2D
 
         PlayerBody Player = GlobalVars.GetIntsance().PlayerNode;
         if (IsInstanceValid(Player))
-            Position = Player.Position + (Vector2.Right * 1000);
+            Position = Player.Position + (Vector2.Right * PlayArea.Size.X);
         ResetPhysicsInterpolation();
 
         Hitbox.TookDamage += () => 

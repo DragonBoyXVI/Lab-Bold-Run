@@ -7,7 +7,7 @@ func _ready() -> void:
 	%MenuButton.pressed.connect( _on_menu_button_pressed );
 	%QuitButton.pressed.connect( _on_quit_button_pressed );
 	
-	PauseManager.GamePaused.connect( _on_pause_manager_game_paused );
+	PauseManager.GamePaused.connect( _on_pause_manager_game_paused ); 
 
 
 func _on_resume_button_pressed() -> void:
