@@ -50,5 +50,5 @@ shape = ExtResource("5_6d8oa")
 
 [node name="DifficultyNode" type="Node" parent="." unique_id=1394291491]
 script = ExtResource("7_7glvj")
-Difficulty = 1
+Difficulty = 2
 metadata/_custom_type_script = "uid://baaegjqe7r644"

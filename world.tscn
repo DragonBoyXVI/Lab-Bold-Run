@@ -8,11 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://nawtou5ou0dy" path="res://back_ground.tscn" id="2_k3n1d"]
 [ext_resource type="Script" uid="uid://dfnlk11mepdf3" path="res://ObstacleSystem/ObstacleSpawner.cs" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://bduhdcjq02scl" path="res://GuiOverlays/game_over_screen.tscn" id="4_gbfbk"]
-[ext_resource type="PackedScene" uid="uid://dpvwy02ctnsmm" path="res://ObstacleSystem/TestBall/ObstacleBall.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dlhw0348gvqcp" path="res://GuiOverlays/save_score_screen.tscn" id="5_ioo17"]
 [ext_resource type="PackedScene" uid="uid://bl7t738p3208l" path="res://GuiOverlays/Saved Score Viewer/saved_score_viewer.tscn" id="6_wse8f"]
 [ext_resource type="PackedScene" uid="uid://chx1bne3cgiuq" path="res://GuiOverlays/pause_menu.tscn" id="9_2o6r5"]
 [ext_resource type="Shader" uid="uid://c5kcwn0fsyqph" path="res://addons/xvi_utilities/Assets/Shaders/screen_hue.gdshader" id="12_k3n1d"]
+[ext_resource type="PackedScene" uid="uid://ci6keskw5ne1" path="res://Obstacles/bouncing_ball_enemy.tscn" id="14_70uel"]
+[ext_resource type="PackedScene" uid="uid://dpvwy02ctnsmm" path="res://ObstacleSystem/TestBall/ObstacleBall.tscn" id="14_hiqwa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2o6r5"]
 shader = ExtResource("12_k3n1d")
@@ -23,6 +24,7 @@ shader_parameter/tint_strength = 1.0
 script = ExtResource("1_036b0")
 
 [node name="BackGround" parent="." unique_id=44597231 instance=ExtResource("2_k3n1d")]
+visible = false
 repeat_size = Vector2(1280, 0)
 follow_viewport = false
 ignore_camera_scroll = true
@@ -89,5 +91,5 @@ position = Vector2(96, 656)
 
 [node name="ObstacleSpawner" type="Node2D" parent="." unique_id=1702109953]
 script = ExtResource("3_tlwt5")
-ObstacleScenes = [ExtResource("5_dwbse")]
+ObstacleScenes = [ExtResource("14_70uel"), ExtResource("14_hiqwa")]
 metadata/_custom_type_script = "uid://dfnlk11mepdf3"

@@ -32,7 +32,7 @@ public partial class ObstacleSpawner : Node2D
         {
             Autostart = false,
             OneShot = false,
-            WaitTime = 0.5,
+            WaitTime = .5f,//1.25f,
             ProcessCallback = Timer.TimerProcessCallback.Physics,
         };
         SpawnTimer.Connect(Timer.SignalName.Timeout, Callable.From(OnSpawnTimerTimeout), (uint)ConnectFlags.Deferred);
@@ -56,6 +56,7 @@ public partial class ObstacleSpawner : Node2D
         }
 
         var i = (int)(GD.Randi() % ObstacleScenes.Length);
+        GD.Print(i);
         var ObScene = ObstacleScenes[ i ];
         var Scene = ObScene.Instantiate<Node2D>();
         AddSibling(Scene);

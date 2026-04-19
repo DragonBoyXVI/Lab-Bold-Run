@@ -13,6 +13,9 @@ public partial class Pedometer : Node
 {
     private static GlobalVars globalVars;
 
+    const float SpeedGain = 0.125f;
+    const float SpeedLoss = 2f;
+
     private enum State
     {
         Stopped,
@@ -62,12 +65,10 @@ public partial class Pedometer : Node
             case State.Stopped: break;
 
             case State.Running:
-                const float SpeedGain = 0.5f;
                 globalVars.WorldSpeed += SpeedGain * dt;
                 break;
             
             case State.Stopping:
-                const float SpeedLoss = 5f;
                 globalVars.WorldSpeed = float.Max( 0f, globalVars.WorldSpeed - (SpeedLoss * dt) );
                 break;
 

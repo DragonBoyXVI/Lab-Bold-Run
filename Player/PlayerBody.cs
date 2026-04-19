@@ -19,6 +19,8 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
     [Export]
     public Hurtbox2D AttackBox;
     [Export]
+    public Hurtbox2D PostMortemHurtbox;
+    [Export]
     public CSStateMachine StateMachine;
 
 
@@ -36,6 +38,7 @@ public partial class PlayerBody : StrippedCharacterBody2DCS
 
         Hitbox.TookDamage += OnHitboxTookDamage;
         AttackBox.DisableDeferred();
+        PostMortemHurtbox.DisableDeferred();
 
         GlobalVars.GetIntsance().PlayerNode = this;
         //yk what sure it works.

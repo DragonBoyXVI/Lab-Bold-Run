@@ -33,6 +33,8 @@ public partial class PlayerDead : PlayerState
         base._EnterState();
 
         ThePedometer.Stop();
+        Player.AttackBox.DisableDeferred();
+        Player.PostMortemHurtbox.EnableDeferred();
         Player.Velocity = Player.Velocity + new Vector2( 0f, -200f );
     }
     public override void _Process(double delta)
@@ -63,7 +65,7 @@ public partial class PlayerDead : PlayerState
         }
         PreviousVelocity = Player.Velocity;
 
-        if ( Player.Velocity.IsZeroApprox() && Player.IsOnFloor() )
+        if ( globalVars.WorldSpeed <= 0f && Player.IsOnFloor() )
         {
             LBRRadio.EmitGameEnded();
             XVIUtil.DisableNodeProcesses(this);

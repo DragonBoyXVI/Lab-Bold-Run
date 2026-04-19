@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ci6keskw5ne1"]
+
+[ext_resource type="Script" uid="uid://caitxas46vmnk" path="res://addons/xvi_utilities/Scripts/Drawings/circle_2d.gd" id="1_kdrk3"]
+[ext_resource type="Script" uid="uid://cwdftj1x8c8ak" path="res://Obstacles/BouncingBallEnemy.cs" id="1_qi8ft"]
+[ext_resource type="Script" uid="uid://baaegjqe7r644" path="res://ObstacleSystem/DifficultyNode.cs" id="1_rvbcf"]
+[ext_resource type="Shape2D" uid="uid://djqbqcs8s8eif" path="res://Obstacles/bouncing_ball_body.tres" id="2_ddhcw"]
+[ext_resource type="Script" uid="uid://c3x43squ6b0mb" path="res://Collision/Hurtbox2D.cs" id="3_lfgfx"]
+[ext_resource type="Script" uid="uid://dd3ttk16e1ep4" path="res://Collision/Hitbox2D.cs" id="6_wq42a"]
+
+[node name="BouncingBallEnemy" type="CharacterBody2D" unique_id=374090995 node_paths=PackedStringArray("Hitbox", "Hurtbox")]
+script = ExtResource("1_qi8ft")
+Hitbox = NodePath("Hitbox2D")
+Hurtbox = NodePath("Hurtbox2D")
+
+[node name="DifficultyNode" type="Node" parent="." unique_id=1324211909]
+script = ExtResource("1_rvbcf")
+Difficulty = 1
+metadata/_custom_type_script = "uid://baaegjqe7r644"
+
+[node name="CircleDrawing2D" type="Node2D" parent="." unique_id=2100192243]
+script = ExtResource("1_kdrk3")
+radius = 48.0
+center_color = Color(0.78431374, 0, 0, 1)
+draw_flags = 3
+metadata/_custom_type_script = "uid://caitxas46vmnk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=249277181]
+shape = ExtResource("2_ddhcw")
+
+[node name="Hurtbox2D" type="Area2D" parent="." unique_id=598813325]
+script = ExtResource("3_lfgfx")
+metadata/_custom_type_script = "uid://c3x43squ6b0mb"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox2D" unique_id=298230864]
+shape = ExtResource("2_ddhcw")
+debug_color = Color(1, 0, 0, 0.65)
+
+[node name="Hitbox2D" type="Area2D" parent="." unique_id=1804416698]
+script = ExtResource("6_wq42a")
+metadata/_custom_type_script = "uid://dd3ttk16e1ep4"
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox2D" unique_id=1697326750]
+shape = ExtResource("2_ddhcw")
